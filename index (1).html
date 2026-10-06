@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Harinandan RP — B.Tech Computer Science and Engineering student portfolio." />
+  <title>Harinandan RP | Computer Science Student</title>
+
+  <style>
+    :root {
+      --bg: #070b12;
+      --bg-soft: #0d131d;
+      --card: #101824;
+      --card-hover: #131f2d;
+      --text: #eef4ff;
+      --muted: #9aa8ba;
+      --blue: #4da3ff;
+      --blue-bright: #75bcff;
+      --border: rgba(116, 166, 220, 0.16);
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
+      --max: 1100px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 80% 10%, rgba(40, 128, 220, 0.10), transparent 30%),
+        radial-gradient(circle at 10% 40%, rgba(40, 128, 220, 0.06), transparent 28%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(92%, var(--max));
+      margin: 0 auto;
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      background: rgba(7, 11, 18, 0.82);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      font-size: 1.15rem;
+    }
+
+    .logo span {
+      color: var(--blue);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .nav-links a {
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--blue-bright);
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 82vh;
+      display: grid;
+      place-items: center;
+      padding: 90px 0 75px;
+    }
+
+    .hero-content {
+      max-width: 850px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border: 1px solid rgba(77, 163, 255, 0.25);
+      border-radius: 999px;
+      color: var(--blue-bright);
+      background: rgba(77, 163, 255, 0.06);
+      font-size: 0.82rem;
+      margin-bottom: 22px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--blue);
+      box-shadow: 0 0 12px var(--blue);
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      line-height: 1.02;
+      letter-spacing: -0.055em;
+      margin-bottom: 22px;
+    }
+
+    h1 span {
+      color: var(--blue);
+    }
+
+    .hero-subtitle {
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.18rem);
+      max-width: 720px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 18px;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+      font-weight: 650;
+      font-size: 0.9rem;
+      transition: 0.2s ease;
+    }
+
+    .button.primary {
+      background: var(--blue);
+      color: #06101c;
+      border-color: var(--blue);
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      border-color: rgba(117, 188, 255, 0.45);
+    }
+
+    .button.primary:hover {
+      background: var(--blue-bright);
+    }
+
+    /* Sections */
+    section {
+      padding: 88px 0;
+      scroll-margin-top: 68px;
+    }
+
+    .section-heading {
+      margin-bottom: 38px;
+    }
+
+    .section-kicker {
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.74rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      line-height: 1.15;
+      letter-spacing: -0.035em;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 50px;
+      align-items: start;
+    }
+
+    .student-card {
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: linear-gradient(145deg, rgba(77, 163, 255, 0.08), var(--card));
+      box-shadow: var(--shadow);
+    }
+
+    .student-card .initials {
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: rgba(77, 163, 255, 0.12);
+      border: 1px solid rgba(77, 163, 255, 0.25);
+      color: var(--blue-bright);
+      font-weight: 800;
+      margin-bottom: 22px;
+    }
+
+    .student-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+    }
+
+    .student-card p,
+    .about-text {
+      color: var(--muted);
+    }
+
+    .about-text {
+      font-size: 1.02rem;
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 310px;
+      padding: 25px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(77, 163, 255, 0.38);
+      background: var(--card-hover);
+    }
+
+    .project-number {
+      color: var(--blue);
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.78rem;
+      margin-bottom: 22px;
+    }
+
+    .project-card h3 {
+      font-size: 1.12rem;
+      margin-bottom: 12px;
+    }
+
+    .project-card p {
+      color: var(--muted);
+      font-size: 0.91rem;
+    }
+
+    .project-link {
+      margin-top: auto;
+      padding-top: 22px;
+      color: var(--blue-bright);
+      font-size: 0.86rem;
+      font-weight: 700;
+    }
+
+    /* Skills */
+    .skills-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill {
+      padding: 9px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: #cbd8e8;
+      font-size: 0.88rem;
+    }
+
+    /* Goals */
+    .goal-box {
+      padding: 34px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background:
+        linear-gradient(135deg, rgba(77, 163, 255, 0.10), transparent 55%),
+        var(--card);
+    }
+
+    .goal-box p {
+      max-width: 850px;
+      color: var(--muted);
+      font-size: 1.03rem;
+    }
+
+    .goal-list {
+      margin-top: 25px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      list-style: none;
+    }
+
+    .goal-list li {
+      color: #cbd8e8;
+      padding: 12px 15px;
+      border-left: 2px solid var(--blue);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    /* Contact */
+    .contact-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+      padding: 30px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--card);
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      margin-top: 5px;
+    }
+
+    footer {
+      padding: 30px 0 40px;
+      border-top: 1px solid var(--border);
+      color: #718096;
+      font-size: 0.82rem;
+      text-align: center;
+    }
+
+    @media (max-width: 800px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        min-height: 75vh;
+        padding-top: 65px;
+      }
+
+      .about-grid,
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .goal-list {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-box {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 480px) {
+      section {
+        padding: 65px 0;
+      }
+
+      h1 {
+        font-size: 2.75rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="container nav-inner">
+      <a class="logo" href="#home">Harinandan<span>.</span></a>
+
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#goals">Goals</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="home">
+    <header class="hero">
+      <div class="container hero-content">
+        <div class="eyebrow">3rd Semester B.Tech CSE Student</div>
+
+        <h1>Hi, I'm <span>Harinandan RP.</span></h1>
+
+        <p class="hero-subtitle">
+          Computer Science and Engineering student at REVA University, Bengaluru,
+          interested in software development, programming, problem solving,
+          and emerging areas of AI and Machine Learning.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button primary" href="#projects">View My Work</a>
+          <a class="button" href="#contact">Get in Touch</a>
+        </div>
+      </div>
+    </header>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-kicker">01 — About</div>
+          <h2>Learning by building and practicing.</h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="student-card">
+            <div class="initials">HR</div>
+            <h3>Harinandan RP</h3>
+            <p>B.Tech Computer Science and Engineering</p>
+            <p>REVA University, Bengaluru</p>
+            <p>3rd Semester</p>
+          </div>
+
+          <p class="about-text">
+            I am interested in software development, programming, problem solving,
+            and emerging areas such as Artificial Intelligence and Machine Learning.
+            I am currently improving my programming fundamentals, algorithms, and
+            problem-solving skills through coding practice and practical projects.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-kicker">02 — Projects / Learning</div>
+          <h2>What I'm working on.</h2>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-number">01 / GITHUB</div>
+            <h3>Hello World Repository</h3>
+            <p>
+              One of my first GitHub development activities. It helped me understand
+              basic project files, GitHub repositories, and maintaining programming
+              work online.
+            </p>
+            <a class="project-link" href="REPLACE_WITH_EXACT_HELLO_WORLD_REPOSITORY_URL" target="_blank" rel="noopener">
+              Repository URL placeholder →
+            </a>
+          </article>
+
+          <article class="project-card">
+            <div class="project-number">02 / COLLABORATION</div>
+            <h3>Pair-Programming Collaboration</h3>
+            <p>
+              A pair-programming activity using GitLens and Live Share that helped me
+              understand collaborative development, code sharing, communication,
+              and Git-based workflows.
+            </p>
+            <a class="project-link" href="https://github.com/harinandan27654514-collab" target="_blank" rel="noopener">
+              GitHub profile →
+            </a>
+          </article>
+
+          <article class="project-card">
+            <div class="project-number">03 / LEETCODE</div>
+            <h3>LeetCode Solutions Repository</h3>
+            <p>
+              A repository for practicing programming and problem solving through
+              coding challenges, testing ideas, writing solutions, and documenting
+              progress.
+            </p>
+            <a class="project-link" href="REPLACE_WITH_EXACT_LEETCODE_SOLUTIONS_REPOSITORY_URL" target="_blank" rel="noopener">
+              Repository URL placeholder →
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-kicker">03 — Skills</div>
+          <h2>Tools and fundamentals.</h2>
+        </div>
+
+        <div class="skills-wrap">
+          <span class="skill">C</span>
+          <span class="skill">C++</span>
+          <span class="skill">Python</span>
+          <span class="skill">SQL</span>
+          <span class="skill">HTML</span>
+          <span class="skill">CSS</span>
+          <span class="skill">Git</span>
+          <span class="skill">GitHub</span>
+          <span class="skill">Problem Solving</span>
+          <span class="skill">Competitive Programming Practice</span>
+          <span class="skill">Basic AI/ML Concepts</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="goals">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-kicker">04 — Goals</div>
+          <h2>Building a strong foundation.</h2>
+        </div>
+
+        <div class="goal-box">
+          <p>
+            My goal is to become a strong software developer with solid programming,
+            problem-solving, and computer science fundamentals. I want to keep
+            improving through consistent practice, practical projects, and
+            exploration of modern technology.
+          </p>
+
+          <ul class="goal-list">
+            <li>Strengthen Data Structures & Algorithms</li>
+            <li>Build practical software projects</li>
+            <li>Contribute consistently to GitHub</li>
+            <li>Explore AI / Machine Learning</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-heading">
+          <div class="section-kicker">05 — Contact</div>
+          <h2>Let's connect.</h2>
+        </div>
+
+        <div class="contact-box">
+          <div>
+            <h3>Harinandan RP</h3>
+            <p>Computer Science and Engineering · REVA University, Bengaluru</p>
+          </div>
+
+          <a
+            class="button primary"
+            href="https://github.com/harinandan27654514-collab"
+            target="_blank"
+            rel="noopener"
+          >
+            GitHub Profile
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Harinandan RP · Built as a personal learning portfolio.
+    </div>
+  </footer>
+</body>
+</html>
